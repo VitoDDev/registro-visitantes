@@ -5,30 +5,30 @@ import { Html } from "react-pdf-html";
 const PDFDocument = () => {
 
     const tabela = `
-    <table>
-        <tr>
-            <td>Visitantes Total</td>
-            <td>1000</td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <td>Visitantes Masculino</td>
-            <td>300</td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <td>Visitantes Feminino</td>
-            <td>600</td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <td>Visitantes Outros</td>
-            <td>100</td>
-        </tr>
-    </table>
+        <table>
+            <tr>
+                <td>Visitantes Total</td>
+                <td>1000</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+            <   td>Visitantes Masculino</>
+                <td>300</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>Visitantes Feminino</td>
+                <td>600</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>Visitantes Outros</td>
+                <td>100</td>
+            </tr>
+        </table>
     `;
     
     const styles = StyleSheet.create({

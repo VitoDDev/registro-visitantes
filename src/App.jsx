@@ -1,16 +1,20 @@
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 import PDFDocument from './components/PDFDocument';
+import Ways from './routes';
+import { AuthContext } from './contexts/AuthContext';
+import { useState } from 'react';
 
 const App = () => {
-
+  const [isLogged, setIsLogged] = useState(true);
   return (
     <>
-      <PDFViewer>
+      {/* <PDFViewer>
         <PDFDocument />
       </PDFViewer>
-      <PDFDownloadLink document={<PDFDocument />} fileName={'registros.pdf'}>
-        BAIXAR PDF
-      </PDFDownloadLink>
+       */}
+      <AuthContext.Provider value={{ isLogged, setIsLogged }}>
+        <Ways/>
+      </AuthContext.Provider>
     </>
   );
 }

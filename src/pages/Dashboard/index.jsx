@@ -52,6 +52,8 @@ const Dashboard = () => {
     const [chartOptions, setChartOptions] = useState({});
     const [chartDataPie, setChartDataPie] = useState({});
     const [chartOptionsPie, setChartOptionsPie] = useState({});
+    const [chartDataLine, setChartDataLine] = useState({});
+    const [chartOptionsLine, setChartOptionsLine] = useState({});
 
     // CONFIGURAÇÃO DO GRAFICO DE BARRAS
     useEffect(() => {
@@ -87,43 +89,98 @@ const Dashboard = () => {
 
         setChartData(data);
         setChartOptions(options);
-    }, []);
 
-    // CONFIGURAÇÃO DO GRAFICO DE PIZZAS (cHART PIE)
 
-    useEffect(() => {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const charDataPie = {
-            labels: ['A', 'B', 'C'],
-            datasets: [
-                {
-                    data: [540, 325, 702],
-                    backgroundColor: [
-                        documentStyle.getPropertyValue('--blue-500'), 
-                        documentStyle.getPropertyValue('--yellow-500'), 
-                        documentStyle.getPropertyValue('--green-500')
-                    ],
-                    hoverBackgroundColor: [
-                        documentStyle.getPropertyValue('--blue-400'), 
-                        documentStyle.getPropertyValue('--yellow-400'), 
-                        documentStyle.getPropertyValue('--green-400')
-                    ]
-                }
-            ]
-        }
-        const chartOptionsPie = {
-            plugins: {
-                legend: {
-                    labels: {
-                        usePointStyle: true
-                    }
+    // CONFIGURAÇÃO DO GRAFICO DE PIZZAS 1 (CHART PIE)
+
+    const dataPie = {
+        labels: ['A', 'B', 'C'],
+        datasets: [
+            {
+                data: [540, 325, 702],
+                backgroundColor: [
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                ],
+                borderColor: [
+                    'rgb(255, 159, 64)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                ]
+            }
+        ]
+    }
+    const optionsPie = {
+        plugins: {
+            legend: {
+                labels: {
+                    usePointStyle: true
                 }
             }
-        };
+        }
+    };
 
-        setChartDataPie(data);
-        setChartOptionsPie(options);
-    }, []);
+    setChartDataPie(dataPie);
+    setChartOptionsPie(optionsPie);
+
+    // CONFIGURAÇÃO DO GRAFICO DE LINHAS
+
+    // const dataLine = {
+    //     labels: ['A', 'B', 'C'],
+    //     datasets: [
+    //         {
+    //             label: 'First Dataset',
+    //             data: [65, 59, 80, 81, 56, 55, 40],
+    //             fill: false,
+    //             borderColor: documentStyle.getPropertyValue('--blue-500'),
+    //             tension: 0.4
+    //         },
+    //         {
+    //             label: 'Second Dataset',
+    //             data: [28, 48, 40, 19, 86, 27, 90],
+    //             fill: false,
+    //             borderColor: documentStyle.getPropertyValue('--pink-500'),
+    //             tension: 0.4
+    //         }
+    //     ]
+    // };
+    // const optionsLine = {
+    //     maintainAspectRatio: false,
+    //     aspectRatio: 0.6,
+    //     plugins: {
+    //         legend: {
+    //             labels: {
+    //                 color: textColor
+    //             }
+    //         }
+    //     },
+    //     scales: {
+    //         x: {
+    //             ticks: {
+    //                 color: textColorSecondary
+    //             },
+    //             grid: {
+    //                 color: surfaceBorder
+    //             }
+    //         },
+    //         y: {
+    //             ticks: {
+    //                 color: textColorSecondary
+    //             },
+    //             grid: {
+    //                 color: surfaceBorder
+    //             }
+    //         }
+    //     }
+    // };
+
+    // setChartDataLine(dataLine);
+    // setChartOptionsLine(optionsLine);
+
+    // CONFIGURAÇÃO DO GRAFICO DE PIZZAS 2
+
+}, []);
 
     return(
         <>
@@ -144,11 +201,19 @@ const Dashboard = () => {
 
                 </div>
                 <div>
-                    grafico de pizza
-                    <Chart type="pie" data={chartData} options={chartOptions} className="grafico" />
+
+                    <h6>Total por gênero</h6>
+                    <Chart className="grafico" type="pie" data={chartDataPie} options={chartOptionsPie} />
                 </div>
-                <div>grafico de linhas</div>
-                <div>grafico de pizzas</div>
+
+                <div>
+                    grafico de linhas
+                    {/* <Chart className="grafico" type="line" data={chartDataLine} options={chartOptionsLine} /> */}
+                </div>
+
+                <div>
+                    grafico de pizzas
+                </div>
             </div>
 
         </DashboardContainer>
